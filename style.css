@@ -11,15 +11,21 @@ html {
     height: 100%;
 }
 
-h1,
-h3 {
+h3,
+p {
     text-align: center;
 }
 
 .legend {
     line-height: 18px;
     color: #555;
+    background-color: white;
+    padding: 10px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
 }
+
 .legend i {
     width: 18px;
     height: 18px;

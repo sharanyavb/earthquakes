@@ -1,1 +1,1 @@
-# earthquakes
+# Earthquake Visualization
