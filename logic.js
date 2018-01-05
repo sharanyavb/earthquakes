@@ -208,7 +208,6 @@ function renderMap(earthquakeURL, faultLinesURL) {
 }
 
 // Inital Rendering
-// Store the API endpoints
 var earthquakeURL = `https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson`;
 var faultLinesURL = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json";
 renderMap(earthquakeURL, faultLinesURL);
