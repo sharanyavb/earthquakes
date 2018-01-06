@@ -52,7 +52,6 @@ function updateURL(event) {
         alert("There's too much data to render :'(" + "\n" + "Please pick another option")
     }
 
-
     // Store the API endpoints
     var earthquakeURL = `https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/${typePart}_${timePart}.geojson`;
     var faultLinesURL = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json";
@@ -109,8 +108,8 @@ function renderMap(earthquakeURL, faultLinesURL) {
             L.polyline(feature.geometry.coordinates);  
         };
 
-        // Create a timeline layer containing the features array on the earthquakeData object
-        // Run the onEachEarthquake function once for each piece of data in the array
+        // Create a GeoJSON layer containing the features array on the earthquakeData object
+        // Run the onEachEarthquake & onEachQuakeLayer functions once for each piece of data in the array
         var earthquakes = L.geoJSON(earthquakeData, {
             onEachFeature: onEachEarthquake,
             pointToLayer: onEachQuakeLayer
@@ -126,6 +125,9 @@ function renderMap(earthquakeURL, faultLinesURL) {
             }
         });
 
+        // Create a Timeline layer containing the features array on the earthquakeData object
+        // Run a function to get the time interval for each earthquake (length based on magnitude)
+        // Run the onEachEarthquake & onEachQuakeLayer functions once for each piece of data in the array
         var timelineLayer = L.timeline(earthquakeData, {
             getInterval: function(feature) {
                 return {
@@ -179,7 +181,6 @@ function renderMap(earthquakeURL, faultLinesURL) {
 
         // Adding Legend
         var legend = L.control({position: 'bottomright'});
-
         legend.onAdd = function(map) {
             var div = L.DomUtil.create('div', 'info legend'),
                         grades = [0, 1, 2, 3, 4, 5],
@@ -192,7 +193,6 @@ function renderMap(earthquakeURL, faultLinesURL) {
 
             return div;
         };
-
         legend.addTo(map);
 
         // Adding timeline & timeline control
@@ -207,7 +207,7 @@ function renderMap(earthquakeURL, faultLinesURL) {
     };
 }
 
-// Inital Rendering
+// Initial Render
 var earthquakeURL = `https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson`;
 var faultLinesURL = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json";
 renderMap(earthquakeURL, faultLinesURL);
