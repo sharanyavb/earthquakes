@@ -207,7 +207,7 @@ function renderMap(earthquakeURL, faultLinesURL) {
     };
 }
 
-// Initial Render
+// Initial Render - all earthquakes for the past 7 days
 var earthquakeURL = `https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson`;
 var faultLinesURL = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json";
 renderMap(earthquakeURL, faultLinesURL);
